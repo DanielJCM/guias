@@ -1,0 +1,11 @@
+$ git status // ver si hay cambios en el repositorio
+
+$ git log // ver los commits del repositorio
+
+$ git add * // agregar todos los cambios al seguimiento de git
+
+$ git commit -m "descripcion del commit" // hacer un commit
+
+$ git push origin master // subir los cambios al repoisitorio en la nube, nos pedira el nombre de usuario y contraseña de la cuenta de github
+
+$ git diff // ver los cambios realizados
