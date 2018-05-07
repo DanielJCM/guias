@@ -1,0 +1,47 @@
+########## Entorno virtual en Python ##########
+
+Agregar teoría...
+
+##### Qué es pip en python #####
+
+Agregar teoría...
+
+##### Instalación #####
+
+Nota:
+
+Usaremos # para los comandos como superusuario
+
+Usaremos $ para los comandos como usuario regular
+
+---
+
+// Instalamos virtualenv y pip
+
+# aptitude install python-virtualenv python-pip
+
+// Creamos una carpeta que contendra los entornos virtuales y entramos en ella
+
+$ mkdir Entornos_Virtuales_Python
+
+$ cd Entornos_Virtuales_Python
+
+// Creamos un entorno virtual, el nombre sin acéntos ni espacios.
+
+$ virtualenv nombre_entorno_virtual
+
+// Usar el entorno virtual creado
+
+$ source nombre_entorno_virtual/bin/activate
+
+// Sabremos que estamos usando el entorno virtual si nos sale en el prompt
+de la consola entre parentesis el nombre del entorno, ejemplo:
+
+(nombre_entorno_virtual) cenditel@fundacioncenditel:~$
+
+// Para salir del entorno virtual usaremos
+
+$ deactivate
+
+Estando dentro del entorno virtual ya podemos instalar los paquetes de python que necesitemos.
+

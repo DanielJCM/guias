@@ -1,0 +1,101 @@
+########## Django de Python ##########
+
+Agregar teoría...
+
+##### Qué es el MVC #####
+
+Agregar teoría...
+
+##### Qué es el MVT en Django #####
+
+Agregar teoría...
+
+##### Instalación #####
+
+Nota:
+
+Usaremos # para los comandos como superusuario
+
+Usaremos $ para los comandos como usuario regular
+
+---
+
+// Instalar la ultima versión de django usando pip
+
+$ pip install django
+
+// Instalar una versión de django específica usando pip
+
+$ pip install django==1.8.8
+
+// Comprobar que django está instalado
+
+// Entramos en la consola de python
+
+$ python
+
+// Importamos la librería django con:
+
+>>> import django
+
+// Si luego de usar el comando anterior no muestra nada entonces está instalado
+
+// Si nos dice que no existe el modulo django entonces no se instalo correctamente
+
+// Ver la versión instalada con:
+
+>>> django.VERSION
+
+// Para salir de la consola de python
+
+>>> exit()
+
+##### Crear un proyecto #####
+
+$ django-admin.py startproject NombreDelProyecto
+
+// El comando anterior nos creara el directorio "NombreDelProyecto" que es la carpeta de nuestro proyecto
+
+// Entramos en la carpeta del proyecto
+
+$ cd NombreDelProyecto
+
+// Listamos el contenido
+
+$ ls
+manage.py  NombreDelProyecto
+
+Nos muestra el script manage.py que es el que permite crear aplicaciones del proyecto
+módulos y nos muestra el directorio "NombreDelProyecto" que contiene los archivos de
+configuración del proyeto.
+
+##### Correr el proyecto #####
+
+$ python manage.py runserver
+
+// Si corrió correctamente mostrará algo como esto:
+
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 13 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+
+May 02, 2018 - 15:48:05
+Django version 1.11.13, using settings 'pagina_web_luis.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-Ci.
+
+// Para comprobarlo visitamos la url http://127.0.0.1:8000/ y nos debe mostrar una página de coor azul que nos dice:
+
+¡Funcionó!
+Felicitaciones por su primera página con Django.
+
+// Correr el servidor de desarrollo con otra dirección IP y otro puerto
+
+$ python manage.py runserver 192.168.12.186:8001
+
+// Para el servidor de desarrollo:
+
+Ctrl + c
