@@ -1,0 +1,125 @@
+##### Guía de Instalación y Configuración de Chamilo #####
+
+//Las versiones usadas para la elaboración de este manual es la Chamilo 1.10.x , Debian8 , Apache2 y PHP5
+
+Nota:
+Usaremos $ para describir los comandos que se usaran con usuario regular.
+Usaremos # para describir los comandos que se usaran con superusuario.
+
+
+####################################################################
+
+En la instalacion de Chamilo, se requerira un servidor web y una base de datos
+por lo que en esta instalacion utilizaremos a MySQL como base de datos y Apache2 
+como servidor web.
+
+1. Instalar, configurar y crear una base de datos con MySQL
+
+1.1 Actualizamos los repositorios
+# apt-get update
+
+1.2. Instalar MySQL server
+# apt-get install mysql-server
+
+1.3. Por la consola nos pedira una contraseña para el usuario root de mysql.
+
+2. Acceder a la consola de mysql, nos pedirá la contraseña solamente.
+# mysql -p
+
+2.1. Crear una base de datos.
+mysql> create database chamilo;
+
+2.2. Crear un usuario y su contraseña.
+mysql> create user 'admin'@'localhost' identified by '123456';
+
+2.3. Darle permisos al usuario creado sobre una base de datos existente.
+mysql> grant all on chamilo.* to 'admin';
+
+2.4. Listar las bases de datos disponibles.
+mysql> show databases;
+
+
+##############################################################################
+
+Usaremos como servidor web el servidor de Apache, este trabaja con PHP por lo que necesitaremos
+instalarlo, ademas de sus modulos de trabajo con Apache, PHP y MySQL
+
+3. Instalacion usando Apache
+
+3.1 Instalamos apache.
+
+# apt-get install apache2
+
+Esto nos creara la ubicacion /var/www/html
+
+4. Instalación de PHP y los módulos de PHP+MySQL+Apache
+
+4.1. Instalamos php, en este caso el 5
+# apt-get install php5 php5-gd php5-mysql libapache2-mod-php5 php5-intl php5-curl php5-json
+
+4.2. Copiamos la carpeta de chamilo en /var/www/html
+
+4.3. Editamos el fichero php.ini, la ubicaión del es /etc/php5/apache2/php.ini
+
+4.3.1 Modificamos el valor de las variables:
+
+max_execution_time = 300 ;Maximum execution time of each script, in seconds
+max_input_time = 600 ;Maximum amount of time each script may spend parsing request data
+memory_limit = 256M ;Maximum amount of memory a script may consume (128MB)
+post_max_size = 100M
+upload_max_filesize = 100M;
+short_open_tag = Off
+session.cookie_httponly = on
+
+4.3.2 Guardamos el fichero php.ini 
+
+4.4. Reiniciamos apache
+
+# systemctl restart apache2
+
+La versión que se uso para la elaboración de este manual es la Chamilo 1.10.x
+por tanto se deben hacer unas configuraciones extras de Apache para
+que todo funcione bien.
+
+5. Vamos a activar el modulo rewrite de Apache con el siguiente comando:
+
+# a2enmod rewrite
+
+5.1. Reiniciamos apache
+
+# systemctl restart apache2
+
+6. Ahora modificamos el fichero /etc/apache2/apache2.conf 
+
+6.1. buscamos el siguiente bloque y cambiamos el valor de AllowOverride de None por All.
+
+<Directory /var/www/>
+  Options Indexes FollowSymLinks
+  AllowOverride All
+  Require all granted
+</Directory>
+
+6.2. Guardamos el fichero y luego reiniciamos apache con:
+
+# systemctl restart apache2
+
+7. Conceder permisos de la carpeta de chamilo con
+
+# chmod -R 777 /var/www/html/chamilo
+
+8. Ahora accedemos a 127.0.0.1/chamilo desde el navegador para ver la plataforma.
+Ya desde el navegador nos pedira algunos datos y tendremos que pulsar algunos botones:
+Nos pide el idioma de instalación, luego checkea los requerimientos.
+
+8. Ahora pulsamos "Nueva instalación"
+
+9.1. Aceptamos la licencia, ahora escribimos el nombre de la base de datos, el usuario y la contraseña
+que configuramos con anterioridad, ahora rellenamos los Parámetros de configuración, como:
+
+9.2 usuario administrador de la plataforma, la contraseña, nombres y apellidos así como email
+
+9.3 Una vez hecho todo eso ya podremos acceder a la pantalla del login de la plataforma en
+http://127.0.0.1/chamilo/index.php y autenticarnos con el usuario creaado en la instalación.
+
+Nota: si corremos la instalacion por la direccion ip y no por el localhost, quedara instalada por defecto con la url de la direccion ip
+
