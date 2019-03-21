@@ -121,5 +121,12 @@ que configuramos con anterioridad, ahora rellenamos los Parámetros de configura
 9.3 Una vez hecho todo eso ya podremos acceder a la pantalla del login de la plataforma en
 http://127.0.0.1/chamilo/index.php y autenticarnos con el usuario creaado en la instalación.
 
-Nota: si corremos la instalacion por la direccion ip y no por el localhost, quedara instalada por defecto con la url de la direccion ip
+Nota: si corremos la instalacion por la direccion ip y no por el localhost, quedara instalada
+por defecto con la url de la direccion ip
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+En caso de que cambie la direccion ip de nuestra maquina, es probable que se nos elimine el contenido del archivo
+chamilo/app/config/configuration.php por lo que tendremos que buscar el contenido en otra instalacion de chamilo
+y reconfigurarlo con nuestra nueva direccio ip. Es importante tener en cuenta las rutas a la que nuestro chamilo
+se conectara para que todo funcione correctamente
